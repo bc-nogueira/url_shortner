@@ -1,0 +1,27 @@
+<h1>Link Generator</h1>
+
+<%= form_with model: @new_link do |f| %>
+  <%= f.text_field :url, value: 'https://www.google.com/' %>
+  <%= f.submit 'Generate' %>
+<% end %>
+
+<br>
+
+<% if @links.present? %>
+  <table>
+    <tr>
+      <th>URL</th>
+      <th>Tiny URL</th>
+      <th>Clicks</th>
+    </tr>
+    <% @links.each do |link| %>
+      <tr>
+        <td><%= link.url %></td>
+        <td><%= link.tiny_url %></td>
+        <td><%= link.clicks %></td>
+      </tr>
+    <% end %>
+  </table>
+<% else %>
+  <h3>There are no links yet!</h3>
+<% end %>
